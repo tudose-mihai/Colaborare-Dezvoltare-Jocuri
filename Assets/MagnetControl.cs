@@ -34,10 +34,10 @@ public class MagnetControl : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
+            switchPolarity *= -1;
             foreach (GameObject magnet in switch_magnets)
             {
                 magnet.GetComponent<PointEffector2D>().forceMagnitude = switchIntensity * switchPolarity;
-                switchPolarity *= -1;
                 if (magnet.GetComponent<SpriteRenderer>().color == Color.green)
                     magnet.GetComponent<SpriteRenderer>().color = Color.red;
                 else
