@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Magnet
+  - Switch Magnet
+  - Toggle Magnet
   layers:
   - Default
   - TransparentFX
@@ -13,7 +15,7 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
+  - Floor
   - 
   - 
   - 
