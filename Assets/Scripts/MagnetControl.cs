@@ -11,6 +11,14 @@ public class MagnetControl : MonoBehaviour
     {
         switch_magnets = GameObject.FindGameObjectsWithTag("Switch Magnet");
         toggle_magnets = GameObject.FindGameObjectsWithTag("Toggle Magnet");
+
+        foreach (GameObject magnet in switch_magnets)
+        {
+            if (magnet.GetComponent<Magnet>().polarity == 1)
+                magnet.GetComponent<SpriteRenderer>().color = Color.red;
+            else
+                magnet.GetComponent<SpriteRenderer>().color = Color.green;
+        }
     }
 
     // Update is called once per frame
@@ -26,8 +34,11 @@ public class MagnetControl : MonoBehaviour
         {
             foreach (GameObject magnet in toggle_magnets)
             {
-                magnet.GetComponent<PointEffector2D>().forceMagnitude = toggleIntensity * togglePolarity;
-                magnet.GetComponent<SpriteRenderer>().color = Color.blue;
+                magnet.GetComponent<PointEffector2D>().forceMagnitude = toggleIntensity * togglePolarity * magnet.GetComponent<Magnet>().polarity;
+                if (magnet.GetComponent<PointEffector2D>().forceMagnitude > 0)
+                    magnet.GetComponent<SpriteRenderer>().color = Color.red;
+                else
+                    magnet.GetComponent<SpriteRenderer>().color = Color.green;
 
             }
         }
@@ -35,10 +46,11 @@ public class MagnetControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             switchPolarity *= -1;
+            togglePolarity *= -1;
             foreach (GameObject magnet in switch_magnets)
             {
-                magnet.GetComponent<PointEffector2D>().forceMagnitude = switchIntensity * switchPolarity;
-                if (magnet.GetComponent<SpriteRenderer>().color == Color.green)
+                magnet.GetComponent<PointEffector2D>().forceMagnitude = switchIntensity * switchPolarity * magnet.GetComponent<Magnet>().polarity;
+                if (magnet.GetComponent<PointEffector2D>().forceMagnitude > 0)
                     magnet.GetComponent<SpriteRenderer>().color = Color.red;
                 else
                     magnet.GetComponent<SpriteRenderer>().color = Color.green;
