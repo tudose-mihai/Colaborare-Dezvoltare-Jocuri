@@ -10,7 +10,7 @@ public class MusicPlayer : MonoBehaviour
 
         if (objs.Length > 1)
         {
-            Destroy(this.gameObject);
+            Destroy(objs[0]);
         }
 
         DontDestroyOnLoad(this.gameObject);
