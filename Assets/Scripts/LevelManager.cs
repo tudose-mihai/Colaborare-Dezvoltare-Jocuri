@@ -5,14 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    public string currentLevel, nextLevel;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         print("level end collide");
         if (collision.gameObject.layer == 6)
         {
-            SceneManager.LoadScene("Level 1", LoadSceneMode.Single);
-            SceneManager.UnloadSceneAsync("SampleScene");
+            SceneManager.LoadScene(nextLevel, LoadSceneMode.Single);
+            SceneManager.UnloadSceneAsync(currentLevel);
 
         }
+    }
+
+    public void ButtonPress()
+    {
+        print("button level end");
+        SceneManager.LoadScene(nextLevel, LoadSceneMode.Single);
     }
 }

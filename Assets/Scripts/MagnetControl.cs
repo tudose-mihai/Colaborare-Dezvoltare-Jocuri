@@ -12,8 +12,11 @@ public class MagnetControl : MonoBehaviour
         switch_magnets = GameObject.FindGameObjectsWithTag("Switch Magnet");
         toggle_magnets = GameObject.FindGameObjectsWithTag("Toggle Magnet");
 
+        switchPolarity *= -1;
+
         foreach (GameObject magnet in switch_magnets)
         {
+            magnet.GetComponent<PointEffector2D>().forceMagnitude = toggleIntensity * togglePolarity * magnet.GetComponent<Magnet>().polarity;
             if (magnet.GetComponent<Magnet>().polarity == 1)
                 magnet.GetComponent<SpriteRenderer>().color = Color.red;
             else
