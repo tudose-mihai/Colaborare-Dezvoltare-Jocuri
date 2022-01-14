@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
     float radius = 0.2f, jumpReach = 0.1f;
     public int maxSpeed = 5;
     Rigidbody2D rb2d;
+    AudioSource audio;
     bool jumpAvailable;
     Vector3 circlePosition, xInput, yInput, startPosition;
     LayerMask floorLayer;
@@ -18,6 +19,7 @@ public class Movement : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         startPosition = rb2d.transform.position;
         floorLayer = LayerMask.GetMask("Floor");
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -29,6 +31,7 @@ public class Movement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) && jumpAvailable)
         {
             rb2d.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
+            audio.Play();
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
