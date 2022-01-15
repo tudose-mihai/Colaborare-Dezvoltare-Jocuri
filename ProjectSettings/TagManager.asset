@@ -8,6 +8,8 @@ TagManager:
   - Switch Magnet
   - Toggle Magnet
   - Music
+  - Timer
+  - End Text
   layers:
   - Default
   - TransparentFX

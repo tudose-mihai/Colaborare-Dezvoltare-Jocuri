@@ -39,6 +39,7 @@ public class Movement : MonoBehaviour
             rb2d.velocity = Vector3.zero;
         }
 
+        
     }
 
     void FixedUpdate()
@@ -51,21 +52,10 @@ public class Movement : MonoBehaviour
             rb2d.velocity = rb2d.velocity.normalized * maxSpeed;
 
         }
-        print(rb2d.velocity);
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        print("we trigger collidin'");
-    }
-    void OnCollisionStay2D(Collision2D collisionObject)
-    {
-        if (collisionObject.gameObject.layer == floorLayer)
-        {
-            //jumpAvailable = true;
-        }
-    }
+
 
     void OnDrawGizmos()
     {

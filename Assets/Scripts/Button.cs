@@ -9,4 +9,5 @@ public class Button : MonoBehaviour
         print("button quit");
         Application.Quit();
     }
+    
 }
